@@ -1,23 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Analyse de l'usage de la réserve parlementaire 2014</title>
-    <script src="libraries/p5.js" type="text/javascript"></script>
 
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Analyse de l'usage de la réserve parlementaire 2014</title>
 
-    <script src="sketch.js" type="text/javascript"></script>
+  <!--
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootflat.github.io/bootflat/css/bootflat.css">
+-->
+  <script src="d3.min.js" type="text/javascript"></script>
 
-    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
-  </head>
-  <body>
+  <!--
+  <script src="libraries/p5.js" type="text/javascript"></script>
+  <script src="libraries/p5.dom.js" type="text/javascript"></script>
+  <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+  <script src="sketch.js" type="text/javascript"></script>
+  -->
+
+
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    
+    canvas {
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    var dataset;
+    d3.json("2014_reserve_parlementaire.json", function(data) {
+    dataset = data;
+    });
+
+    //dataset = [21, 25, 63, 85, 45, 23];
+
+    d3.select("body").selectAll("p")
+      .data(dataset)
+      .enter()
+      .append("p")
+      .text(function(d) {
+        
+        return d;
+      });
+  </script>
+
+
+  <!--
+  <div class="jumbotron">
+
     <h1>Détails sur la dépense de la réserve parlementaire 2014</h1>
     <p>La Réserve Parlementaire est un ensemble de subventions d'Etat votées et modifiées en lois de finances intiales ou rectificatives. Son enveloppe globale est donc votée par les députées eux-mêmes.</p>
     <p>Les bénéficiaires sont choisis par les parlementaires eux-mêmes pour soutenir des investissements locaux, menés par des collectivités locales, ou par des associations.</p>
-    <p>Le choix de soutenir tel ou tel projet est la discrétion de chaque parlementaire. Sans soupçonner personne de verser des sommes d'argent public à des associations dont le but pourrait être discutable, il est toutefois intéressant de pouvoir précisément examiner ce que chaque parlementaire fait de cette subvention, levée avec nos impôts.</p>
-    <p>La loi Bartolone impose la transparence des comptes et oblige maintenant chaque parlementaire à déclarer et indiquer les bénéficiaires. A la lueur de ce qui est publié sur le site de l'Assemblée Nationale, il est toutefois très difficile de se faire une opinion sur la pertinence des associations et des projets soutenus.</p>
+    <p>Le choix de soutenir tel ou tel projet est la discrétion de chaque parlementaire. Sans soupçonner personne de verser des sommes d'argent public à des associations dont le but pourrait être discutable, il est toutefois intéressant de pouvoir précisément
+      examiner ce que chaque parlementaire fait de cette subvention, levée avec nos impôts.</p>
+    <p>La loi Bartolone impose la transparence des comptes et oblige maintenant chaque parlementaire à déclarer et indiquer les bénéficiaires. A la lueur de ce qui est publié sur le site de l'Assemblée Nationale, il est toutefois très difficile de se faire
+      une opinion sur la pertinence des associations et des projets soutenus.</p>
     <p>Cette application doit nous permettre d'approfondir cela.</p>
-  </body>
+  </div>
+  -->
+</body>
+
 </html>

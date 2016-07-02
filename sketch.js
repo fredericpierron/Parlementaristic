@@ -10,7 +10,22 @@ function setup() {
 
 function fichierOK(data) {
   reserve = data;
+
   if (reserve) {
+
+    /// Trier les données selon le Montant
+    reserve.sort(function(a, b) {
+      if (a.Montant > b.Montant) {
+        return 1;
+      }
+      if (a.Montant < b.Montant) {
+        return -1;
+      }
+      //must be equal to 0
+      return 0;
+    });
+    // Fin du tri
+
     // recupérer la dépense totale
     var depenseTotale = 0;
     for (i = 0; i < reserve.length; i++) {
